@@ -1,7 +1,8 @@
 # Challenge Case Study 1 - Danny’s Diner
 
 # **Relationship Diagram**
-![image](https://github.com/user-attachments/assets/84352eef-fbdf-4308-8feb-bf678d63a0e4)
+![image](https://github.com/user-attachments/assets/9a4b8564-9b93-444a-aa5b-c05bb9d74a00)
+
 
 # **Data preview**
 Sales table:
