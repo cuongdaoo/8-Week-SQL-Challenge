@@ -330,3 +330,125 @@ group by runner_id;
 ```
 Output: \
 
+## C. Ingredient Optimisation
+
+**1. What are the standard ingredients for each pizza?**  
+Idea: Retrieve the list of toppings for each pizza and combine them into a single string.
+```sql
+with cte as(select pizza_id,value as topping_id
+		 from pizza_recipes
+		cross apply string_split (toppings,',')),
+		irg as( select pizza_id, topping_name from pizza_toppings pt
+		join cte on cte.topping_id=pt.topping_id)
+select pizza_name, STRING_AGG(topping_name,',') as topping_name from pizza_names pn
+join irg on irg.pizza_id= pn.pizza_id
+group by pizza_name;
+```
+Output:  
+\
+
+---
+
+**2. What was the most commonly added extra?**  
+Idea: Find the most frequently added extra topping by counting occurrences of extra toppings.
+```sql
+with extra as(select value as topping_id from Updated_customer_orders
+				cross apply string_split(extras,','))
+select top 1 topping_name, count(extra.topping_id) added_extras_count from pizza_toppings pt
+join extra on extra.topping_id=pt.topping_id
+group by topping_name
+order by added_extras_count desc;
+```
+Output:  
+\
+
+---
+
+**3. What was the most common exclusion?**  
+Idea: Identify the topping that customers most frequently exclude from their orders.
+```sql
+with extra as(select value as topping_id from Updated_customer_orders
+				cross apply string_split(exclusions,','))
+select top 1 topping_name, count(extra.topping_id) added_extras_count from pizza_toppings pt
+join extra on extra.topping_id=pt.topping_id
+group by topping_name
+order by added_extras_count desc;
+```
+Output:  
+\
+
+---
+
+**4. Generate an order item for each record in the customers_orders table**  
+Idea: Create a descriptive label for each order, showing any excluded or extra toppings.
+```sql
+with up_row as(select *,ROW_NUMBER() over(order by order_id asc) as reorder_id from Updated_customer_orders),
+	exclu as (select reorder_id, order_id,customer_id,pizza_id, split1.value as topping_id_exclu from up_row
+				cross apply string_split(exclusions,',') as split1),
+	all_exclu as (select  reorder_id,order_id,customer_id,pizza_name, string_agg(topping_id_exclu,',') exclusions, string_agg(pt1.topping_name,',') as topping_exclu_name from exclu 
+					left join pizza_names on exclu.pizza_id= pizza_names.pizza_id
+					left join pizza_toppings pt1 on exclu.topping_id_exclu=pt1.topping_id
+					group by reorder_id,order_id,customer_id,pizza_name),
+	extra as (select reorder_id, order_id,customer_id,pizza_id, split2.value as topping_id_extra from up_row
+				cross apply string_split(extras,',') as split2),
+	all_extra as (select  reorder_id,order_id,customer_id,pizza_name, string_agg(topping_id_extra,',') extras, string_agg(pt2.topping_name,',') as topping_extra_name from extra 
+					left join pizza_names on extra.pizza_id= pizza_names.pizza_id
+					left join pizza_toppings pt2 on extra.topping_id_extra=pt2.topping_id
+					group by reorder_id,order_id,customer_id,pizza_name),
+	final as (select all_exclu.reorder_id,all_exclu.order_id,all_exclu.customer_id,all_exclu.pizza_name, topping_exclu_name, topping_extra_name from all_exclu
+				join all_extra on all_extra.reorder_id=all_exclu.reorder_id)
+select reorder_id,order_id, pizza_name, case when pizza_name is not null and topping_exclu_name is null and topping_extra_name is null then pizza_name
+	     when pizza_name is not null and topping_exclu_name is not null and topping_extra_name is not null then concat(pizza_name,' - ','Exclude ',topping_exclu_name,' - ','Extra ',topping_extra_name)
+		 when pizza_name is not null and topping_exclu_name is null and topping_extra_name is not null then concat(pizza_name,' - ','Extra ',topping_exclu_name)
+		 when pizza_name is not null and topping_exclu_name is not null and topping_extra_name is null then concat(pizza_name,' - ','Exclude ',topping_exclu_name)
+	 end as order_item
+from final
+order by reorder_id,order_id, pizza_name;
+```
+Output:  
+\
+
+---
+
+**5. Generate an alphabetically ordered comma-separated ingredient list for each pizza order**  
+Idea: List ingredients alphabetically for each pizza order, prepending "2x" to duplicates.
+```sql
+with up_row as(select *,ROW_NUMBER() over(order by order_id asc) as reorder_id from Updated_customer_orders),
+	cte as(select reorder_id, order_id,customer_id,c.pizza_id,toppings, exclusions,value as topping_id_extra  from up_row c left join pizza_recipes pr on pr.pizza_id=c.pizza_id
+				cross apply string_split(extras,',')),
+	cte2 as(select reorder_id,order_id,customer_id,pizza_id,toppings, exclusions,topping_name as topping_name_extra, value as topping_id_all from cte left join pizza_toppings on cte.topping_id_extra=pizza_toppings.topping_id
+	cross apply string_split(toppings,',')),
+	cte3 as(select reorder_id,order_id,customer_id,pizza_id,toppings, exclusions,topping_name_extra, topping_name as topping_name_all, case when topping_name_extra=topping_name then 'X2'+topping_name_extra else topping_name end as topping
+	from cte2 left join pizza_toppings on cte2.topping_id_all=pizza_toppings.topping_id)
+select reorder_id,order_id, customer_id ,pizza_id, toppings, exclusions,STRING_AGG(topping,',') topping_name from cte3
+group by reorder_id,order_id, customer_id ,pizza_id, toppings, exclusions
+order by order_id asc;
+```
+Output:  
+\
+
+---
+
+**6. What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?**  
+Idea: Count how often each topping is used across all pizzas, including extras and exclusions.
+```sql
+with cte as (
+select LTRIM(RTRIM(value)) as topping, case when toppings <>'' then 1 else 0 end as marked from Updated_customer_orders c
+join pizza_recipes pr on pr.pizza_id=c.pizza_id
+cross apply string_split(toppings,',')
+union all
+select LTRIM(RTRIM(value)) as topping, case when exclusions <>'' then -1 else 0 end as marked from Updated_customer_orders c
+join pizza_recipes pr on pr.pizza_id=c.pizza_id
+cross apply string_split(exclusions,',')
+union all
+select LTRIM(RTRIM(value)) as topping, case when extras <>'' then 1 else 0 end as marked from Updated_customer_orders c
+join pizza_recipes pr on pr.pizza_id=c.pizza_id
+cross apply string_split(extras,','))
+select topping_name, sum(marked) times_used_topping from cte
+left join pizza_toppings pt on pt.topping_id=cte.topping
+where topping <>''
+group by topping_name
+order by times_used_topping desc;
+```
+Output:  
+\
