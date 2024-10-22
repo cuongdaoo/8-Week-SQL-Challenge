@@ -229,3 +229,104 @@ group by DATENAME(WEEKDAY, order_time);
 ```
 Output:
 \
+
+## B) Runner and Customer Experience
+**1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)**
+**Idea:** We group runners by specific 1-week periods starting from a given date.
+```sql
+select case 
+	WHEN registration_date BETWEEN '2021-01-01' AND '2021-01-07' THEN '2021-01-01'
+    WHEN registration_date BETWEEN '2021-01-08' AND '2021-01-14' THEN '2021-01-08'
+    WHEN registration_date BETWEEN '2021-01-15' AND '2021-01-21' THEN '2021-01-15'
+  END AS "Week Start Period", count(runner_id) as cnt 
+from runners
+group by case 
+	WHEN registration_date BETWEEN '2021-01-01' AND '2021-01-07' THEN '2021-01-01'
+    WHEN registration_date BETWEEN '2021-01-08' AND '2021-01-14' THEN '2021-01-08'
+    WHEN registration_date BETWEEN '2021-01-15' AND '2021-01-21' THEN '2021-01-15'
+  END;
+```
+Output: \
+  
+**2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pick up the order?**
+**Idea:** Calculate the average time taken for runners to reach HQ after receiving an order.
+```sql
+select runner_id, avg(datepart(minute, pickup_time - order_time)) avg_time 
+from updated_runner_orders r
+join Updated_customer_orders o on o.order_id = r.order_id
+where duration is not null
+group by runner_id;
+```
+Output: \
+
+**3. Is there any relationship between the number of pizzas and how long the order takes to prepare?**
+**Idea:** Compare the average preparation time against the number of pizzas in each order.
+```sql
+with preparetime as (
+  select r.order_id, datepart(minute, pickup_time - order_time) time 
+  from updated_runner_orders r
+  join Updated_customer_orders o on o.order_id = r.order_id
+  where pickup_time is not null
+),
+ordertime as (
+  select order_id, order_time, count(pizza_id) amount 
+  from Updated_customer_orders
+  group by order_id, order_time
+)
+select amount, avg(time) avg_pre_time 
+from preparetime p
+join ordertime o on p.order_id = o.order_id
+group by amount;
+```
+Output: \
+
+**4. What was the average distance traveled for each customer?**
+**Idea:** Calculate the average delivery distance for each customer.
+```sql
+select customer_id, avg(distance) avg_distance 
+from Updated_customer_orders c
+join updated_runner_orders r on c.order_id = r.order_id
+group by customer_id;
+```
+Output: \
+
+**5. What was the difference between the longest and shortest delivery times for all orders?**
+**Idea:** Find the maximum and minimum delivery times, then calculate the difference.
+```sql
+select max(duration) - min(duration) 
+"Difference between the longest and shortest delivery times for all orders" 
+from updated_runner_orders;
+```
+Output: \
+
+**6. What was the average speed for each runner for each delivery and do you notice any trend for these values?**
+**Idea:** Calculate the delivery speed of each runner and check for trends in the values.
+```sql
+with ordertime as (
+  select order_id, order_time, count(pizza_id) amount 
+  from Updated_customer_orders
+  group by order_id, order_time
+),
+speed as (
+  select order_id, runner_id, round((60 * distance / duration), 2) speed_km 
+  from updated_runner_orders 
+  where cancellation is null
+)
+select runner_id, amount, speed_km, 
+       avg(speed_km) over (partition by runner_id) avg_time_runner 
+from speed r
+join ordertime o on o.order_id = r.order_id;
+```
+Output: \
+
+**7. What is the successful delivery percentage for each runner?**
+**Idea:** Calculate the percentage of successful deliveries (where pickup time is present) for each runner.
+```sql
+select runner_id, 
+       round(100 * count(pickup_time) / count(order_id), 0) 
+       "successful delivery percentage" 
+from updated_runner_orders
+group by runner_id;
+```
+Output: \
+
