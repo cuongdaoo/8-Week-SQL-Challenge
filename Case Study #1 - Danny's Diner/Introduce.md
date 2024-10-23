@@ -1,5 +1,6 @@
 # Case Study #1 - Danny's Diner
-![image](https://github.com/user-attachments/assets/04f69f55-715c-485e-86d0-c9c2bf2bb25f)
+<p align="center">
+<img src="https://github.com/qanhnn12/8-Week-SQL-Challenge/blob/main/IMG/2.png" align="center" width="400" height="400" >
 
 A summary table of the applied methods and SQL techniques for each query:
 
