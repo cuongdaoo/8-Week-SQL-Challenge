@@ -452,3 +452,107 @@ order by times_used_topping desc;
 ```
 Output:  
 \
+
+## D. Pricing and Ratings
+
+**1.	If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?**  
+Idea: Compute the total revenue from completed orders, based on pizza type, without delivery fees or cancellations.
+```sql
+select sum(case when pizza_name='Meatlovers' then 12 else 10 end) cost from Updated_customer_orders c
+join pizza_names pn on pn.pizza_id=c.pizza_id
+join updated_runner_orders r on r.order_id=c.order_id and cancellation is null;
+```
+Output:  
+\
+
+---
+
+**2.	What if there was an additional $1 charge for any pizza extras? -- a.	Add cheese is $1 extra**  
+Idea: Adjust the total cost by adding $1 per extra topping for each pizza.
+```sql
+with  cte1 as (select *, case when pizza_name='Meatlovers' then 12 else 10 end as cost from pizza_names),
+	  cte2 as (select pizza_name, case when extras='' then cost else cost + len(REPLACE(extras,', ','')) end as cost_add  from cte1
+				join pizza_recipes pr on pr.pizza_id=cte1.pizza_id 
+				join Updated_customer_orders c on c.pizza_id=cte1.pizza_id)
+select sum(cost_add) all_cost from cte2;
+```
+Output:  
+\
+
+---
+
+**-- 3.	The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.**  
+Idea: Create a table to store ratings for runners on a scale of 1 to 5.
+```sql
+DROP TABLE IF EXISTS ratings;
+CREATE TABLE ratings (
+  order_id INT,
+  rating INT);
+INSERT INTO ratings (order_id, rating)
+VALUES 
+  (1,3),
+  (2,5),
+  (3,3),
+  (4,1),
+  (5,5),
+  (7,3),
+  (8,4),
+  (10,3);
+SELECT * FROM ratings;
+```
+Output:  
+\
+
+---
+
+**4.	Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?
+-- a.	customer_id
+-- b.	order_id
+-- c.	runner_id
+-- d.	rating
+-- e.	order_time
+-- f.	pickup_time
+-- g.	Time between order and pickup
+-- h.	Delivery duration
+-- i.	Average speed
+-- j.	Total number of pizzas**  
+Idea: Combine customer, order, and runner details, including timing and delivery metrics.
+```sql
+SELECT 
+  c.customer_id,
+  c.order_id,
+  r.runner_id,
+  c.order_time,
+  r.pickup_time,
+  DATEDIFF(MINUTE, c.order_time, r.pickup_time) AS mins_difference,
+  r.duration,
+  ROUND(AVG(r.distance/r.duration*60), 1) AS avg_speed,
+  COUNT(c.order_id) AS pizza_count
+FROM Updated_customer_orders c
+JOIN updated_runner_orders r 
+  ON r.order_id = c.order_id
+GROUP BY 
+  c.customer_id,
+  c.order_id,
+  r.runner_id,
+  c.order_time,
+  r.pickup_time, 
+  r.duration;
+```
+Output:  
+\
+
+---
+
+**-- 5.	If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?**  
+Idea: Calculate net revenue by deducting runner costs (paid per km) from total revenue.
+```sql
+with cte as( select c.order_id ,sum(case when pizza_name='Meatlovers' then 12 else 10 end) revenue from Updated_customer_orders c
+join pizza_names pn on pn.pizza_id=c.pizza_id
+join updated_runner_orders r on r.order_id=c.order_id and cancellation is null
+group by c.order_id)
+select sum(revenue),  sum(distance*0.3) dis_cost, sum(revenue)- sum(distance*0.3) from updated_runner_orders r
+join cte on cte.order_id=r.order_id;
+```
+Output:  
+\
