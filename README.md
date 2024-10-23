@@ -7,8 +7,8 @@ Thanks @DataWithDanny for interesting SQL case studies! :wave:🏻
 
 
 ## 📕 Table of Contents
-* [Case Study #1 - Danny's Diner]([https://github.com/qanhnn12/8-Week-SQL-Challenge#-case-study-1---dannys-diner](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/Solution.md))
-* [Case Study #2 - Pizza Runner]([https://github.com/qanhnn12/8-Week-SQL-Challenge#-case-study-2---pizza-runner](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20Pizza%20Runner/Solution.md))
+* [Case Study #1 - Danny's Diner](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/Solution.md)
+* [Case Study #2 - Pizza Runner](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20Pizza%20Runner/Solution.md)
 
 
 ---
