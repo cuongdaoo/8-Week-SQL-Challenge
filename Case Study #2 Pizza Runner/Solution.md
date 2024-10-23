@@ -371,8 +371,8 @@ group by pizza_name;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/a6982b7e-c83c-4c89-b097-ba80d1c14090)
 
----
 
 **2. What was the most commonly added extra?**  
 Idea: Find the most frequently added extra topping by counting occurrences of extra toppings.
@@ -386,8 +386,8 @@ order by added_extras_count desc;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/bf9fe84f-1973-41bd-a6c9-8eac2e05f24a)
 
----
 
 **3. What was the most common exclusion?**  
 Idea: Identify the topping that customers most frequently exclude from their orders.
@@ -401,8 +401,8 @@ order by added_extras_count desc;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/be5c450b-582b-41e1-94e6-aeccb93a95e5)
 
----
 
 **4. Generate an order item for each record in the customers_orders table**  
 Idea: Create a descriptive label for each order, showing any excluded or extra toppings.
@@ -432,8 +432,8 @@ order by reorder_id,order_id, pizza_name;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/471a2ae5-be2c-4abe-9e32-892179cbaf33)
 
----
 
 **5. Generate an alphabetically ordered comma-separated ingredient list for each pizza order**  
 Idea: List ingredients alphabetically for each pizza order, prepending "2x" to duplicates.
@@ -451,8 +451,8 @@ order by order_id asc;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/b27b5148-96ad-4f9f-9456-6a72a1bb41f6)
 
----
 
 **6. What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?**  
 Idea: Count how often each topping is used across all pizzas, including extras and exclusions.
@@ -477,6 +477,7 @@ order by times_used_topping desc;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/af6a6fd4-2e66-4a5c-bf45-1a03c7ff4215)
 
 ## D. Pricing and Ratings
 
