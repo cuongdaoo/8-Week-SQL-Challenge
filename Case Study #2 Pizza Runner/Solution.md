@@ -230,7 +230,7 @@ group by DATENAME(WEEKDAY, order_time);
 Output:
 \
 
-## B) Runner and Customer Experience
+## B. Runner and Customer Experience
 **1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)**
 **Idea:** We group runners by specific 1-week periods starting from a given date.
 ```sql
