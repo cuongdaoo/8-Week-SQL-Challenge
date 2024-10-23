@@ -28,6 +28,7 @@ group by customer_id;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/7c4707e7-82e9-4249-b22d-1a79f3e41d87)
 
 ---
 
@@ -40,6 +41,7 @@ group by customer_id;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/6303278d-33a2-49df-b551-1b447f16c44c)
 
 ---
 
@@ -55,6 +57,7 @@ where list_food=1;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/40824173-abf2-4622-b354-0801520027ab)
 
 ---
 
@@ -69,6 +72,7 @@ order by amount desc;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/d1156e43-11f8-4011-8712-178a8115d381)
 
 ---
 
@@ -85,6 +89,7 @@ where rank_popular=1;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/62aad45e-a8b9-4ec5-b36b-7281206adea7)
 
 ---
 
@@ -101,6 +106,7 @@ where list_food=1;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/f9619a87-e95d-439c-91e6-aafc7b5fee0c)
 
 ---
 
@@ -117,6 +123,7 @@ where list_food=1;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/c7a3dc95-0a84-4417-bf6a-e860ff001c72)
 
 ---
 
@@ -136,6 +143,7 @@ GROUP BY s.customer_id;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/06c5989c-ec39-49b3-b8a4-2f2a97f4d6c5)
 
 ---
 
@@ -150,6 +158,7 @@ group by customer_id;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/fa4fa4fe-8b28-4d56-8129-78fb356e9ee7)
 
 ---
 
@@ -157,13 +166,6 @@ Output:
 Idea: Calculate points for customers A and B, applying a 2x multiplier for the first week after joining and during January.
 
 ```sql
-with s as (select s.customer_id, price*2*10 total from sales s
-join menu m on s.product_id=m.product_id
-join members me on me.customer_id=s.customer_id 
-where order_date between join_date and DATEADD(day,7,join_date) and month(order_date)<2)
-select customer_id, sum(total) from s
-group by customer_id;
-
 select 
 s.customer_id, 
 sum(
@@ -182,3 +184,4 @@ group by s.customer_id;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/e4c193a5-851d-4f57-9639-57ccf5b235b7)
