@@ -100,6 +100,13 @@ ALTER COLUMN topping_name VARCHAR(MAX)
 ```
 **After cleaning**:
 \
+Updated_customer_orders table:
+\
+![image](https://github.com/user-attachments/assets/baeeb6da-14c6-4daa-8100-eae03b102026)
+\
+updated_runner_orders table:
+\
+![image](https://github.com/user-attachments/assets/5c177c49-4abd-4881-a900-d3713743eb01)
 
 # **Solutions**
 
@@ -113,6 +120,7 @@ select count(*) pizza_count from customer_orders;
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/f853c311-6fdb-41c4-9e1f-ae2b8867d322)
 
 **2. How many unique customer orders were made?**
 Idea: Find the number of distinct orders from the updated runner orders table.
@@ -122,6 +130,7 @@ select Count(order_id) "orders were made" from updated_runner_orders;
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/860f698d-9001-4106-b4db-5448051bc5d9)
 
 **3. How many successful orders were delivered by each runner?**
 Idea: Count the non-canceled orders for each runner.
@@ -134,6 +143,7 @@ group by runner_id;
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/d03a301d-40b4-44f7-abec-2de6d2faf6a6)
 
 **4. How many of each type of pizza was delivered?**
 Idea: Calculate the total deliveries for each pizza type by joining customer orders and runner orders.
@@ -147,6 +157,7 @@ group by pizza_id;
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/f409e243-7406-4323-890f-3e4770b1dd44)
 
 **5. How many Vegetarian and Meatlovers were ordered by each customer?**
 Idea: Classify orders by pizza type and group them by customers.
@@ -165,6 +176,7 @@ group by customer_id;
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/d1ed0e17-bdd1-4d14-a8eb-00764d87fbaf)
 
 **6. What was the maximum number of pizzas delivered in a single order?**
 Idea: Find the highest count of pizzas in any single order.
@@ -180,6 +192,7 @@ from c;
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/c38a4039-666f-43f8-8856-d123220efc20)
 
 **7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?**
 Idea: Group pizza orders with or without changes per customer.
@@ -195,6 +208,8 @@ group by customer_id;
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/58ecd17a-ae6c-4fdf-86c9-b937a1480ec0)
+
 
 **8. How many pizzas were delivered that had both exclusions and extras?**
 Idea: Count the pizzas with both exclusions and extras.
@@ -207,6 +222,7 @@ where cancellation is null;
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/fcd9df94-0c6f-40b2-8324-b9d6faedb82c)
 
 **9. What was the total volume of pizzas ordered for each hour of the day?**
 Idea: Group and count pizza orders by the hour of the day.
@@ -218,6 +234,7 @@ group by DATEPART(hour, order_time);
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/4af7df83-6336-4f9d-ad8e-ca6cc3d992dd)
 
 **10. What was the volume of orders for each day of the week?**
 Idea: Group and count pizza orders by the day of the week.
@@ -229,6 +246,7 @@ group by DATENAME(WEEKDAY, order_time);
 ```
 Output:
 \
+![image](https://github.com/user-attachments/assets/b696d49b-38b6-4fad-b265-8b8ecfb1d940)
 
 ## B. Runner and Customer Experience
 **1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)**
@@ -247,6 +265,7 @@ group by case
   END;
 ```
 Output: \
+![image](https://github.com/user-attachments/assets/ca87e00a-1e08-4e43-ac2d-71668a7eaf99)
   
 **2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pick up the order?**
 **Idea:** Calculate the average time taken for runners to reach HQ after receiving an order.
@@ -258,6 +277,7 @@ where duration is not null
 group by runner_id;
 ```
 Output: \
+![image](https://github.com/user-attachments/assets/a706e2d8-d6ac-40a5-bc5d-eb2111b13c06)
 
 **3. Is there any relationship between the number of pizzas and how long the order takes to prepare?**
 **Idea:** Compare the average preparation time against the number of pizzas in each order.
@@ -279,6 +299,7 @@ join ordertime o on p.order_id = o.order_id
 group by amount;
 ```
 Output: \
+![image](https://github.com/user-attachments/assets/5aafa15a-aba9-401e-a1d8-299201241d3e)
 
 **4. What was the average distance traveled for each customer?**
 **Idea:** Calculate the average delivery distance for each customer.
@@ -289,6 +310,7 @@ join updated_runner_orders r on c.order_id = r.order_id
 group by customer_id;
 ```
 Output: \
+![image](https://github.com/user-attachments/assets/4d48b432-b05c-4668-897f-cadd1c155e84)
 
 **5. What was the difference between the longest and shortest delivery times for all orders?**
 **Idea:** Find the maximum and minimum delivery times, then calculate the difference.
@@ -298,6 +320,7 @@ select max(duration) - min(duration)
 from updated_runner_orders;
 ```
 Output: \
+![image](https://github.com/user-attachments/assets/ad1fb069-5e6c-4a88-8ae8-c0ff27a7df37)
 
 **6. What was the average speed for each runner for each delivery and do you notice any trend for these values?**
 **Idea:** Calculate the delivery speed of each runner and check for trends in the values.
@@ -318,6 +341,7 @@ from speed r
 join ordertime o on o.order_id = r.order_id;
 ```
 Output: \
+![image](https://github.com/user-attachments/assets/1dcee408-f326-42cb-b483-25274841fd30)
 
 **7. What is the successful delivery percentage for each runner?**
 **Idea:** Calculate the percentage of successful deliveries (where pickup time is present) for each runner.
@@ -329,6 +353,7 @@ from updated_runner_orders
 group by runner_id;
 ```
 Output: \
+![image](https://github.com/user-attachments/assets/447d9f0d-4527-4e7e-af25-76a27cb86293)
 
 ## C. Ingredient Optimisation
 
