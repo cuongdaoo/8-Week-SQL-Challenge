@@ -490,8 +490,8 @@ join updated_runner_orders r on r.order_id=c.order_id and cancellation is null;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/e1538fdc-d5cd-49be-8dce-3a40d216a673)
 
----
 
 **2.	What if there was an additional $1 charge for any pizza extras? -- a.	Add cheese is $1 extra**  
 Idea: Adjust the total cost by adding $1 per extra topping for each pizza.
@@ -504,8 +504,8 @@ select sum(cost_add) all_cost from cte2;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/b994dd0f-a026-4737-acc3-a3f255cfc489)
 
----
 
 **-- 3.	The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.**  
 Idea: Create a table to store ratings for runners on a scale of 1 to 5.
@@ -528,8 +528,8 @@ SELECT * FROM ratings;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/23fe288a-fcb5-467f-92a8-33c302b3e8ed)
 
----
 
 **4.	Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?
 -- a.	customer_id
@@ -567,8 +567,8 @@ GROUP BY
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/c3b4442d-8ebe-468d-81a5-4cac4bbd7e29)
 
----
 
 **-- 5.	If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?**  
 Idea: Calculate net revenue by deducting runner costs (paid per km) from total revenue.
@@ -582,3 +582,4 @@ join cte on cte.order_id=r.order_id;
 ```
 Output:  
 \
+![image](https://github.com/user-attachments/assets/dec4dced-0759-4fc5-96c6-2a1cc01dc484)
