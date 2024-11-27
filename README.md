@@ -37,3 +37,31 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 ***View the case study [here](https://8weeksqlchallenge.com/case-study-2/) and my solution 
   [here](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20Pizza%20Runner/Solution.md).***
+---
+## 🥑 Case Study #3 - Foodie-Fi
+<p align="center">
+<img src="https://github.com/qanhnn12/8-Week-SQL-Challenge/blob/main/IMG/3.png" align="center" width="400" height="400" >
+
+Danny was scrolling through his Instagram feed when something really caught his eye - “80s Retro Styling and Pizza Is The Future!”
+
+Danny was sold on the idea, but he knew that pizza alone was not going to help him get seed funding to expand his new Pizza Empire - so he had one more genius idea to combine with it - he was going to Uberize it - and so Pizza Runner was launched!
+
+Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house) and also maxed out his credit card to pay freelance developers to build a mobile app to accept orders from customers.
+
+***View the case study [here](https://8weeksqlchallenge.com/case-study-3/) and my solution [here](https://github.com/cuongdaoo/8-Week-SQL-Challenge/tree/main/Case%20Study%20%233%20-%20Foodie-Fi).***
+  
+---
+## :bar_chart: Case Study #4 - Data Bank
+<p align="center">
+<img src="https://github.com/qanhnn12/8-Week-SQL-Challenge/blob/main/IMG/4.png" align="center" width="400" height="400" >
+
+There is a new innovation in the financial industry called Neo-Banks: new aged digital only banks without physical branches.
+
+Danny thought that there should be some sort of intersection between these new age banks, cryptocurrency and the data world…so he decides to launch a new initiative - Data Bank!
+
+The management team at Data Bank want to increase their total customer base - but also need some help tracking just how much data storage their customers will need.
+
+This case study is all about calculating metrics, growth and helping the business analyse their data in a smart way to better forecast and plan for their future developments!
+
+***View the case study [here](https://8weeksqlchallenge.com/case-study-4/) and my solution [here]().***
+  
