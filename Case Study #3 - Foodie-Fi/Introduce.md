@@ -1,3 +1,7 @@
+## 🥑 Case Study #3 - Foodie-Fi
+<p align="center">
+<img src="https://github.com/qanhnn12/8-Week-SQL-Challenge/blob/main/IMG/3.png" align="center" width="400" height="400" >
+
 The summary table based on your SQL analysis tasks:  
 
 | **Category**               | **Objective**                                                                                     | **SQL Method/Technique Applied**                                                                                   |
