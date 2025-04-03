@@ -11,7 +11,8 @@ Thanks @DataWithDanny for interesting SQL case studies! :wave:🏻
 * [Case Study #2 - Pizza Runner](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%8D%95-,Case%20Study%20%232%20%2D%20Pizza%20Runner,-Danny%20was%20scrolling)
 * [Case Study #3 - Foodie-Fi](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%A5%91-,Case%20Study%20%233%20%2D%20Foodie%2DFi,-Danny%20was%20scrolling)
 * [Case Study #4 - Data Bank](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%93%8A-,Case%20Study%20%234%20%2D%20Data%20Bank,-There%20is%20a)
-
+* [Case Study #5 - Data Mart](https://github.com/qanhnn12/8-Week-SQL-Challenge#-case-study-5---data-mart)
+* [Case Study #6 - Clique Bait](https://github.com/qanhnn12/8-Week-SQL-Challenge#-case-study-6---clique-bait)
 
 ---
 ## 🍜 Case Study #1 - Danny's Diner
@@ -74,7 +75,7 @@ Data Mart is Danny’s latest venture and after running international operations
 
 In June 2020 - large scale supply changes were made at Data Mart. All Data Mart products now use sustainable packaging methods in every single step from the farm all the way to the customer. Danny needs your help to quantify the impact of this change on the sales performance for Data Mart and it’s separate business areas.
 
-***View the case study [here](https://8weeksqlchallenge.com/case-study-5/) and my solution [here](https://github.com/qanhnn12/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart).***
+***View the case study [here](https://8weeksqlchallenge.com/case-study-5/) and my solution [here](https://github.com/cuongdaoo/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart).***
   
 ---
 ## 🐟 Case Study #6 - Clique Bait
@@ -85,6 +86,6 @@ Clique Bait is not like your regular online seafood store - the founder and CEO 
 
 In this case study - you are required to support Danny’s vision and analyse his dataset and come up with creative solutions to calculate funnel fallout rates for the Clique Bait online store.
 
-***View the case study [here](https://8weeksqlchallenge.com/case-study-6/) and my solution [here](https://github.com/qanhnn12/8-Week-SQL-Challenge/tree/main/Case%20Study%20%236%20-%20Clique%20Bait).***
+***View the case study [here](https://8weeksqlchallenge.com/case-study-6/) and my solution [here](https://github.com/cuongdaoo/8-Week-SQL-Challenge/tree/main/Case%20Study%20%236%20-%20Clique%20Bait).***
   
   
