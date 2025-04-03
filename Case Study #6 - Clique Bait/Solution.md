@@ -1,22 +1,5 @@
 # Challenge Case Study #6 - Clique Bait
 
-
-# **Data preview**
-Regions table:
-\
-![image](https://github.com/user-attachments/assets/cbef8802-b7f1-42af-baff-cbe20ecf7475)
-\
-Customer_nodes table:
-\
-![image](https://github.com/user-attachments/assets/baa85a1a-c777-499b-ba31-8d4cd09fbd5f)
-\
-Customer_transactions table:
-\
-![image](https://github.com/user-attachments/assets/48514fed-390e-41a7-91f6-a813e10a3240)
-\
-# **Solutions**
-
-
 # B. Digital Analysis
 
 ## 1. How many users are there?
