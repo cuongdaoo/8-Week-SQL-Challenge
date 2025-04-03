@@ -1,3 +1,8 @@
+# Case Study #6 - Clique Bait
+<p align="center">
+<img src="https://github.com/user-attachments/assets/c6040de8-def8-4257-a623-8703d6a7859b" align="center" width="400" height="400" >
+
+
 This table summarizes the key SQL techniques used to analyze different aspects of the dataset.
 
 | Category | Objective | SQL Method/Technique Applied |
