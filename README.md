@@ -11,8 +11,8 @@ Thanks @DataWithDanny for interesting SQL case studies! :wave:🏻
 * [Case Study #2 - Pizza Runner](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%8D%95-,Case%20Study%20%232%20%2D%20Pizza%20Runner,-Danny%20was%20scrolling)
 * [Case Study #3 - Foodie-Fi](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%A5%91-,Case%20Study%20%233%20%2D%20Foodie%2DFi,-Danny%20was%20scrolling)
 * [Case Study #4 - Data Bank](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%93%8A-,Case%20Study%20%234%20%2D%20Data%20Bank,-There%20is%20a)
-* [Case Study #5 - Data Mart](https://github.com/qanhnn12/8-Week-SQL-Challenge#-case-study-5---data-mart)
-* [Case Study #6 - Clique Bait](https://github.com/qanhnn12/8-Week-SQL-Challenge#-case-study-6---clique-bait)
+* [Case Study #5 - Data Mart](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%9B%92%20Case%20Study%20%235%20%2D%20Data%20Mart)
+* [Case Study #6 - Clique Bait](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%90%9F%20Case%20Study%20%236%20%2D%20Clique%20Bait)
 
 ---
 ## 🍜 Case Study #1 - Danny's Diner
