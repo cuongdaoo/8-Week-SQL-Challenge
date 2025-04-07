@@ -13,7 +13,7 @@ Thanks @DataWithDanny for interesting SQL case studies! :wave:🏻
 * [Case Study #4 - Data Bank](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%93%8A-,Case%20Study%20%234%20%2D%20Data%20Bank,-There%20is%20a)
 * [Case Study #5 - Data Mart](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%9B%92%20Case%20Study%20%235%20%2D%20Data%20Mart)
 * [Case Study #6 - Clique Bait](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%90%9F%20Case%20Study%20%236%20%2D%20Clique%20Bait)
-* [Case Study #7 - Balanced Tree Clothing Co.](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%90%9F%20Case%20Study%20%236%20%2D%20Clique%20Bait)
+* [Case Study #7 - Balanced Tree Clothing Co.](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%91%95%20Case%20Study%20%237%20%2D%20Balanced%20Tree%20Clothing%20Co.)
 
 ---
 ## 🍜 Case Study #1 - Danny's Diner
