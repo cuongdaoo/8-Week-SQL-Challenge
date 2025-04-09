@@ -14,7 +14,7 @@ Thanks @DataWithDanny for interesting SQL case studies! :wave:🏻
 * [Case Study #5 - Data Mart](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%9B%92%20Case%20Study%20%235%20%2D%20Data%20Mart)
 * [Case Study #6 - Clique Bait](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%90%9F%20Case%20Study%20%236%20%2D%20Clique%20Bait)
 * [Case Study #7 - Balanced Tree Clothing Co.](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%91%95%20Case%20Study%20%237%20%2D%20Balanced%20Tree%20Clothing%20Co.)
-* [Case Study #8 - Fresh Segments](https://github.com/cuongdaoo/8-Week-SQL-Challenge/blob/main/README.md#:~:text=%F0%9F%91%95%20Case%20Study%20%237%20%2D%20Balanced%20Tree%20Clothing%20Co.)
+* [Case Study #8 - Fresh Segments](https://github.com/cuongdaoo/8-Week-SQL-Challenge#:~:text=%F0%9F%8D%8A%20Case%20Study%20%238%20%2D%20Fresh%20Segments)
 
 ---
 ## 🍜 Case Study #1 - Danny's Diner
@@ -109,6 +109,6 @@ Clients share their customer lists with the Fresh Segments team who then aggrega
 
 Danny has asked for your assistance to analyse aggregated metrics for an example client and provide some high level insights about the customer list and their interests.
 
-***View the case study [here](https://8weeksqlchallenge.com/case-study-8/) and my solution [here](https://github.com/qanhnn12/8-Week-SQL-Challenge/tree/main/Case%20Study%20%238%20-%20Fresh%20Segments).***
+***View the case study [here](https://8weeksqlchallenge.com/case-study-8/) and my solution [here](https://github.com/cuongdaoo/8-Week-SQL-Challenge/tree/main/Case%20Study%20%238%20-%20Fresh%20Segments).***
 
 ---
